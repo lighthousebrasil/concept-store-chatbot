@@ -85,13 +85,8 @@ const initSdk = (name) => {
             enableSpeech: true,                         // Enables voice recognition
             enableTimestamp: false,                     // Show timestamp with each message
             speechLocale: WebSDK.SPEECH_LOCALE.EN_US,   // Sets locale used to speak to the skill, the SDK supports EN_US, FR_FR, and ES_ES locales for speech
-            showConnectionStatus: true,                 // Displays current connection status on the header
-            i18n: {                                     // Provide translations for the strings used in the widget
-                en: {                                   // en locale, can be configured for any locale
-                    chatTitle: '<Chat Header Title>'    // Set title at chat header
-                }
-            },
-            theme: WebSDK.THEME.REDWOOD_DARK            // Redwood dark theme. The default is THEME.DEFAULT, while older theme is available as THEME.CLASSIC
+            showConnectionStatus: false,                 // Displays current connection status on the header
+            theme: WebSDK.THEME.DEFAULT            // Redwood dark theme. The default is THEME.DEFAULT, THEME.REDWOOD_DARK while older theme is available as THEME.CLASSIC
         };
 
         // Initialize SDK
