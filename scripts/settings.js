@@ -107,8 +107,15 @@ const initSdk = (name) => {
         });
 
         // Connect to the ODA
-        Bots.connect();
-        Bots.openChat()
+        Bots.connect()
+        .then(
+            function() {
+                Bots.openChat()
+            },
+            function(error) {
+                // Something went wrong during connection
+            }
+        )
 
         // Create global object to refer Bots
         window[name] = Bots;
