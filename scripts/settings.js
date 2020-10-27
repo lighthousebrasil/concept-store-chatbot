@@ -89,6 +89,7 @@ const initSdk = (name) => {
             theme: WebSDK.THEME.DEFAULT,            // Redwood dark theme. The default is THEME.DEFAULT, THEME.REDWOOD_DARK while older theme is available as THEME.CLASSIC,
             //embedded: true,
             //targetElement: '<targetDivId>',
+            colors: {"branding": "white", "text": "#212121", "textLight": "#737373"},
             position: {bottom: '20px', right: '20px'}
         };
 
