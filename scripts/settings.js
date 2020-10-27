@@ -86,7 +86,7 @@ const initSdk = (name) => {
             enableTimestamp: false,                     // Show timestamp with each message
             speechLocale: WebSDK.SPEECH_LOCALE.EN_US,   // Sets locale used to speak to the skill, the SDK supports EN_US, FR_FR, and ES_ES locales for speech
             showConnectionStatus: false,                 // Displays current connection status on the header
-            theme: WebSDK.THEME.DEFAULT            // Redwood dark theme. The default is THEME.DEFAULT, THEME.REDWOOD_DARK while older theme is available as THEME.CLASSIC
+            theme: WebSDK.THEME.DEFAULT            // Redwood dark theme. The default is THEME.DEFAULT, THEME.REDWOOD_DARK while older theme is available as THEME.CLASSIC,
         };
 
         // Initialize SDK
@@ -105,6 +105,7 @@ const initSdk = (name) => {
         Bots.on(WebSDK.EVENT.WIDGET_OPENED, () => {
             console.log('Widget is opened');
         });
+        Bots.setSize('1vmax' ,'1vmax',)
 
         // Connect to the ODA
         Bots.connect()
