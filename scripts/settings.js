@@ -88,7 +88,8 @@ const initSdk = (name) => {
             showConnectionStatus: false,                 // Displays current connection status on the header
             theme: WebSDK.THEME.DEFAULT,            // Redwood dark theme. The default is THEME.DEFAULT, THEME.REDWOOD_DARK while older theme is available as THEME.CLASSIC,
             //embedded: true,
-            //targetElement: '<targetDivId>'
+            //targetElement: '<targetDivId>',
+            position: {bottom: '20px', right: '20px'}
         };
 
         // Initialize SDK
