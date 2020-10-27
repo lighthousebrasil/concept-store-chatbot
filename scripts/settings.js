@@ -110,7 +110,6 @@ const initSdk = (name) => {
         Bots.connect()
         .then(
             () => {
-                alert('open chat')
                 Bots.openChat()
             }
         )
