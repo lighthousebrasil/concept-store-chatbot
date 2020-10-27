@@ -109,12 +109,9 @@ const initSdk = (name) => {
         // Connect to the ODA
         Bots.connect()
         .then(
-            function() {
+            () => {
                 alert('open chat')
                 Bots.openChat()
-            },
-            function(error) {
-                // Something went wrong during connection
             }
         )
 
