@@ -77,7 +77,7 @@ const initSdk = (name) => {
         let chatWidgetSettings = {
             URI: 'oda-2497a55ccce743cdb5e930a2c58741f6-da2.data.digitalassistant.oci.oraclecloud.com',                               // ODA URI, only the hostname part should be passed, without the https://
             clientAuthEnabled: isClientAuthEnabled,     // Enables client auth enabled mode of connection if set true
-            channelId: 'dcbee622-55ac-454d-8203-b1cf65c9f40c',                   // Channel ID, available in channel settings in ODA UI
+            channelId: '1d73f8de-966c-4a6e-89c4-eb170b52a08d',                   // Channel ID, available in channel settings in ODA UI
             userId: '<userID>',                         // User ID, optional field to personalize user experience
             enableAutocomplete: true,                   // Enables autocomplete suggestions on user input
             enableBotAudioResponse: true,               // Enables audio utterance of skill responses
