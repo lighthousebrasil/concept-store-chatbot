@@ -62,13 +62,14 @@ const generateToken = () => {
  * @param {string} name Name by which the chat widget should be referred
  */
 const initSdk = (name) => {
-    alert(document.getElementById('output').innerHTML);
     if (!name) {
         name = 'Bots';          // Set default reference name to 'Bots'
     }
     let Bots;
 
     setTimeout(() => {
+        alert(document.getElementById('output').innerHTML);
+
         /**
          * SDK configuration settings
          * Other than URI, all fields are optional with two exceptions for auth modes
