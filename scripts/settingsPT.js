@@ -3,16 +3,6 @@
 // Set client auth mode - true to enable client auth, false to disable it
 const isClientAuthEnabled = false;
 
-var email;
-var password;
-var language;
-
-function onLoadAppParameters() {
-    email = window.sessionStorage.getItem("profile");
-}
-
-window.onload = onLoadAppParameters;
-
 /**
  * A function mocking an endpoint call to backend to provide authentication token
  * The recommended behaviour is fetching the token from backend server
@@ -77,7 +67,7 @@ const initSdk = (name) => {
     let Bots;
 
     setTimeout(() => {
-        alert(email)
+        alert(window.sessionStorage.getItem("profile"))
 
         /**
          * SDK configuration settings
