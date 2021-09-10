@@ -37,7 +37,7 @@ const initSdk = (name) => {
         let chatWidgetSettings = {
             URI: 'oda-2497a55ccce743cdb5e930a2c58741f6-da2.data.digitalassistant.oci.oraclecloud.com',                               // ODA URI, only the hostname part should be passed, without the https://
             clientAuthEnabled: isClientAuthEnabled,     // Enables client auth enabled mode of connection if set true
-            channelId: 'dcbee622-55ac-454d-8203-b1cf65c9f40c',                   // Channel ID, available in channel settings in ODA UI
+            channelId: '46e6b051-0e2f-4ac7-a4d2-7151a51bc320',                   // Channel ID, available in channel settings in ODA UI
             userId: '<userID>',                         // User ID, optional field to personalize user experience
             enableAutocomplete: true,                   // Enables autocomplete suggestions on user input
             enableBotAudioResponse: true,               // Enables audio utterance of skill responses
@@ -49,6 +49,18 @@ const initSdk = (name) => {
             theme: WebSDK.THEME.DEFAULT,            // Redwood dark theme. The default is THEME.DEFAULT, THEME.REDWOOD_DARK while older theme is available as THEME.CLASSIC,
             //embedded: true,
             //targetElement: '<targetDivId>',
+            multiLangChat: {
+                supportedLangs: [{
+                    lang: 'en'
+                }, {
+                    lang: 'es',
+                    label: 'Español'
+                }, {
+                    lang: 'pt'
+                    label: 'Português'
+                }],
+                primary: 'pt'
+            },
             colors: {"branding": "white", "text": "#292929", "textLight": "#737373", "typingIndicator": "#D47229", 'botText': 'white', 'botMessageBackground': '#D47229', "actionsBackground": '#232323' },
             position: {bottom: '20px', right: '20px'},
             
