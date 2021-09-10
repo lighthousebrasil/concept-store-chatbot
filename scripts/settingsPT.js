@@ -98,7 +98,7 @@ const initSdk = (name) => {
                     lang: 'es',
                     label: 'Español'
                 }, {
-                    lang: 'pt'
+                    lang: 'pt',
                     label: 'Português'
                 }],
                 primary: 'pt'
