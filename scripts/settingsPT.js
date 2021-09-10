@@ -3,57 +3,13 @@
 // Set client auth mode - true to enable client auth, false to disable it
 const isClientAuthEnabled = false;
 
-/**
- * A function mocking an endpoint call to backend to provide authentication token
- * The recommended behaviour is fetching the token from backend server
- *
- * @returns {Promise} Promise to provide a signed JWT token
- */
-const mockApiCall = () => {
-    return new Promise((resolve) => {
-        setTimeout(function() {
-            const now = Math.floor(Date.now() / 1000)
-            const payload = {
-                iat: now,
-                exp: now + 3600,
-                channelId: '<channelID>',
-                userId: '<userID>'
-            };
-            const SECRET = '<channel-secret>';
+var email;
+var password;
+var language;
 
-            // An unimplemented function generating signed JWT token with given header, payload, and signature
-            const token = generateJWTToken({ alg: 'HS256', typ: 'JWT' }, payload, SECRET);
-            resolve(token);
-        }, Math.floor(Math.random() * 1000) + 1000);
-    });
-};
-
-/**
- * Unimplemented function to generate signed JWT token. Should be replaced with
- * actual method to generate the token on the server.
- *
- * @param {object} header
- * @param {object} payload
- * @param {string} signature
- */
-const generateJWTToken = (header, payload, signature) => {
-    throw new Error("Method not implemented.");
-};
-
-/**
- * Function to generate JWT tokens. It returns a Promise to provide tokens.
- * The function is passed to SDK which uses it to fetch token whenever it needs
- * to establish connections to chat server
- *
- * @returns {Promise} Promise to provide a signed JWT token
- */
-const generateToken = () => {
-    return new Promise((resolve) => {
-        mockApiCall('https://mockurl').then((token) => {
-            resolve(token);
-        });
-    });
-};
+function onLoadAppParameters() {
+    email = document.getElementById('output').value;
+}
 
 /**
  * Initializes the SDK and sets a global field with passed name for it the can
@@ -68,8 +24,7 @@ const initSdk = (name) => {
     let Bots;
 
     setTimeout(() => {
-        alert(sessionStorage.getItem('profile'));
-        alert(document.getElementById('output').value)
+        alert(email)
 
         /**
          * SDK configuration settings
