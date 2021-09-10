@@ -68,6 +68,7 @@ const initSdk = (name) => {
     let Bots;
 
     setTimeout(() => {
+        alert(sessionStorage.getItem('profile'))
         /**
          * SDK configuration settings
          * Other than URI, all fields are optional with two exceptions for auth modes
