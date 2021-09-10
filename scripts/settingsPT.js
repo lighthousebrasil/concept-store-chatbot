@@ -68,7 +68,7 @@ const initSdk = (name) => {
     let Bots;
 
     setTimeout(() => {
-        alert('a ' + document.getElementById("output").value);
+        alert(document.getElementById("output").value);
 
         /**
          * SDK configuration settings
