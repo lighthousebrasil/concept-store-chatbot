@@ -61,13 +61,14 @@ const generateToken = () => {
  * @param {string} name Name by which the chat widget should be referred
  */
 const initSdk = (name) => {
+    alert(window.sessionStorage.getItem("profile"))
+
     if (!name) {
         name = 'Bots';          // Set default reference name to 'Bots'
     }
     let Bots;
 
     setTimeout(() => {
-        alert(window.sessionStorage.getItem("profile"))
 
         /**
          * SDK configuration settings
