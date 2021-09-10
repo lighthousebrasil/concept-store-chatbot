@@ -62,6 +62,7 @@ const generateToken = () => {
  * @param {string} name Name by which the chat widget should be referred
  */
 const initSdk = (name) => {
+    console.log(document.getElementById('output').innerHTML);
     if (!name) {
         name = 'Bots';          // Set default reference name to 'Bots'
     }
