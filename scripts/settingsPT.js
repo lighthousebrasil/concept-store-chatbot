@@ -8,7 +8,7 @@ var password;
 var language;
 
 function onLoadAppParameters() {
-    email = document.getElementById('output').value;
+    email = window.sessionStorage.getItem("profile");
 }
 
 window.onload = onLoadAppParameters;
