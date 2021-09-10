@@ -11,6 +11,8 @@ function onLoadAppParameters() {
     email = document.getElementById('output').value;
 }
 
+window.onload = onLoadAppParameters;
+
 /**
  * Initializes the SDK and sets a global field with passed name for it the can
  * be referred later
