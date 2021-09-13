@@ -85,7 +85,6 @@ const generateToken = () => {
  * @param {string} name Name by which the chat widget should be referred
  */
 const initSdk = (name) => {
-    alert(window.sessionStorage.getItem("profile"))
 
     if (!name) {
         name = 'Bots';          // Set default reference name to 'Bots'
@@ -164,7 +163,7 @@ const initSdk = (name) => {
 };
     </script>
                 <script src="scripts/web-sdk.js" onload="initSdk('Bots')"></script>
-                <script>alert(window.sessionStorage.getItem("profile"));</script>
+                <script>alert(window.sessionStorage.getItem('profile'));</script>
 
 
 </html>
