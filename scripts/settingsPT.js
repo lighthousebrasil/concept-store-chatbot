@@ -60,8 +60,8 @@ const generateToken = () => {
  *
  * @param {string} name Name by which the chat widget should be referred
  */
-const initSdk = (name) => {
-    alert(window.sessionStorage.getItem("profile"))
+const initSdk = (name, profile) => {
+    alert("user profile ", profile);
 
     if (!name) {
         name = 'Bots';          // Set default reference name to 'Bots'
