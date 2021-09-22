@@ -36,7 +36,7 @@ var skillVoiceES = [{ lang: 'es-ES' }]
  * @param {string} name Name by which the chat widget should be referred
  */
 var initSdk = function(name) {
-	alert('Olá sr ' + sessionStorage.getItem('teste'));
+	alert('Olá SR ' + sessionStorage.getItem('givenName'));
     if (!name) {
         name = 'Bots';          // Set default reference name to 'Bots'
     }
