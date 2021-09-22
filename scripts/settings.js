@@ -41,9 +41,9 @@ var initSdk = function(name) {
     }
     var Bots;
 
-	var locale = sessionStorage.getItem('languageTag');
-	var speechLocale = locale == 'pt-BR' ? 'pt-br' : locale == 'es' ? 'es-es' :'en-US';
-	var skillVoices = locale == 'pt-BR' ? skillVoicePT : locale == 'es' ? skillVoiceES :skillVoiceEN;
+    var locale = sessionStorage.getItem('languageTag');
+    var speechLocale = locale == 'pt-BR' ? 'pt-br' : locale == 'es' ? 'es-es' :'en-US';
+    var skillVoices = locale == 'pt-BR' ? skillVoicePT : locale == 'es' ? skillVoiceES :skillVoiceEN;
 
     setTimeout(function() {
         /**
@@ -174,7 +174,9 @@ var initSdk = function(name) {
 				}
 			}		
 		};
-		Bots = new WebSDK(chatWidgetSettings);
+	Bots = new WebSDK(chatWidgetSettings);
+	    
+	Bots.setSize('100vw' ,'100vh');
 
 	// Connect to the ODA
         Bots.connect()
