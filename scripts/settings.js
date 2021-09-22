@@ -176,9 +176,14 @@ var initSdk = function(name) {
 		};
 		Bots = new WebSDK(chatWidgetSettings);
 
-		// Connect to the ODA
-        Bots.connect();
-		
+	// Connect to the ODA
+        Bots.connect()
+        .then(
+            () => {
+                Bots.openChat()
+            }
+        )
+	    
         // Create global object to refer Bots
         window[name] = Bots;
 		
