@@ -1,142 +1,202 @@
 'use strict';
 
 // Set client auth mode - true to enable client auth, false to disable it
-const isClientAuthEnabled = false;
+var isClientAuthEnabled = false;
 
-/**
- * A function mocking an endpoint call to backend to provide authentication token
- * The recommended behaviour is fetching the token from backend server
- *
- * @returns {Promise} Promise to provide a signed JWT token
- */
-const mockApiCall = () => {
-    return new Promise((resolve) => {
-        setTimeout(function() {
-            const now = Math.floor(Date.now() / 1000)
-            const payload = {
-                iat: now,
-                exp: now + 3600,
-                channelId: '<channelID>',
-                userId: '<userID>'
-            };
-            const SECRET = '<channel-secret>';
+var skillVoicePT =  [{ 
+	lang: 'pt-br', 
+	name: 'Google português do Brasil' }, 
+{ 
+	lang: 'pt-br', 
+	name: 'Luciana' 
+}, { 
+	lang: 'pt-PT', 
+	name: 'Joana' }, 
+{ 
+	lang: 'pt-br' 
+}];
 
-            // An unimplemented function generating signed JWT token with given header, payload, and signature
-            const token = generateJWTToken({ alg: 'HS256', typ: 'JWT' }, payload, SECRET);
-            resolve(token);
-        }, Math.floor(Math.random() * 1000) + 1000);
-    });
-};
+var skillVoiceEN =  [{
+	lang: 'en-US',
+	name: 'Samantha'
+}, {
+	lang: 'en-US',
+	name: 'Alex'
+}, {
+	lang: 'en-US'
+}];
 
-/**
- * Unimplemented function to generate signed JWT token. Should be replaced with
- * actual method to generate the token on the server.
- *
- * @param {object} header
- * @param {object} payload
- * @param {string} signature
- */
-const generateJWTToken = (header, payload, signature) => {
-    throw new Error("Method not implemented.");
-};
+var skillVoiceES = [{ lang: 'es-ES' }]
 
-/**
- * Function to generate JWT tokens. It returns a Promise to provide tokens.
- * The function is passed to SDK which uses it to fetch token whenever it needs
- * to establish connections to chat server
- *
- * @returns {Promise} Promise to provide a signed JWT token
- */
-const generateToken = () => {
-    return new Promise((resolve) => {
-        mockApiCall('https://mockurl').then((token) => {
-            resolve(token);
-        });
-    });
-};
+
 /**
  * Initializes the SDK and sets a global field with passed name for it the can
  * be referred later
  *
  * @param {string} name Name by which the chat widget should be referred
  */
-const initSdk = (name) => {
-    alert("load user profile " + sessionStorage.getItem('profile'));
-    alert("load user profile " + sessionStorage.getItem('password'));
-
-
+var initSdk = function(name) {
     if (!name) {
         name = 'Bots';          // Set default reference name to 'Bots'
     }
-    let Bots;
+    var Bots;
 
-    setTimeout(() => {
+	var locale = sessionStorage.getItem('languageTag');
+	var speechLocale = locale == 'pt-BR' ? 'pt-br' : locale == 'es' ? 'es-es' :'en-US';
+	var skillVoices = locale == 'pt-BR' ? skillVoicePT : locale == 'es' ? skillVoiceES :skillVoiceEN;
 
+    setTimeout(function() {
         /**
          * SDK configuration settings
          * Other than URI, all fields are optional with two exceptions for auth modes
          * In client auth disabled mode, 'channelId' must be passed, 'userId' is optional
          * In client auth enabled mode, 'clientAuthEnabled: true' must be passed
-         */
-        let chatWidgetSettings = {
-            URI: 'oda-2497a55ccce743cdb5e930a2c58741f6-da2.data.digitalassistant.oci.oraclecloud.com',                               // ODA URI, only the hostname part should be passed, without the https://
-            clientAuthEnabled: isClientAuthEnabled,     // Enables client auth enabled mode of connection if set true
-            channelId: '46e6b051-0e2f-4ac7-a4d2-7151a51bc320',                   // Channel ID, available in channel settings in ODA UI
-            userId: '<userID>',                         // User ID, optional field to personalize user experience
-            enableAutocomplete: true,                   // Enables autocomplete suggestions on user input
-            enableBotAudioResponse: true,               // Enables audio utterance of skill responses
-            enableClearMessage: true,                   // Enables display of button to clear conversation
-            enableSpeech: true,                         // Enables voice recognition
-            enableTimestamp: false,                     // Show timestamp with each message
-            speechLocale: WebSDK.SPEECH_LOCALE.EN_US,   // Sets locale used to speak to the skill, the SDK supports EN_US, FR_FR, and ES_ES locales for speech
-            showConnectionStatus: false,                 // Displays current connection status on the header
-            theme: WebSDK.THEME.DEFAULT,            // Redwood dark theme. The default is THEME.DEFAULT, THEME.REDWOOD_DARK while older theme is available as THEME.CLASSIC,
-            //embedded: true,
-            //targetElement: '<targetDivId>',
-            multiLangChat: {
-                supportedLangs: [{
-                    lang: 'en'
-                }, {
-                    lang: 'es',
-                    label: 'Español'
-                }, {
-                    lang: 'pt',
-                    label: 'Português'
-                }],
-                primary: 'pt'
-            },
-            colors: {"branding": "white", "text": "#292929", "textLight": "#737373", "typingIndicator": "#D47229", 'botText': 'white', 'botMessageBackground': '#D47229', "actionsBackground": '#232323' },
-            position: {bottom: '20px', right: '20px'},
-            
-        };
+         */		
+		var chatWidgetSettings = {
+			URI: 'oda-2497a55ccce743cdb5e930a2c58741f6-da2.data.digitalassistant.oci.oraclecloud.com',
+			channelId: '46e6b051-0e2f-4ac7-a4d2-7151a51bc320',
+			openChatOnLoad: false,
+			initUserHiddenMessage: 'Oi',
+			initMessageOptions: {
+				sendAt: 'expand'
+			},
+			displayActionsAsPills: false,
+			enableAttachment: true,
+//			shareMenuItems: ['visual'],
+			shareLocation: false,
+			enableAutocomplete: true,
+			enableAutocompleteClientCache: true,
+			enableClearMessage: true,
+			initUserProfile : {
+				profile:{
+					givenName: sessionStorage.getItem('givenName'),
+					surname: sessionStorage.getItem('surname'),
+					email: sessionStorage.getItem('email'),
+					languageTag: sessionStorage.getItem('languageTag')
+				},
+				properties: {
+					userInt: sessionStorage.getItem('email'),
+					passInt: sessionStorage.getItem('passInt'),
+					userId: sessionStorage.getItem('userId')
+				}
+			},			
+			enableTimestamp: true,
+			showConnectionStatus: true,
+			embeddedVideo: true,
+			locale: 'pt-BR',
+			enableBotAudioResponse: true,
+			enableSpeech: true,
+			speechLocale: speechLocale,
+			enableSecureConnection: true,
+			initBotAudioMuted: true,
+			skillVoices: skillVoices,			
+/*			multiLangChat: {
+				supportedLangs: [{
+					lang: 'en'
+				}, {
+					lang: 'es',
+					label: 'Español'
+				}, {
+					lang: 'pt',
+					label: 'Português'
+				}],
+				primary: 'pt'
+			},	*/		
+			conversationBeginPosition: 'bottom',
+			botButtonIcon: 'botOracle/images/iconConceptStore.png',
+			logoIcon: 'botOracle/images/iconConceptStore.png',
+			botIcon: 'botOracle/images/iconConceptStore.png', 	
+			font: '12px "Mier B", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+			colors: {
+				branding: '#004E8B',
+				botMessageBackground: '#ECECEC',
+				userMessageBackground: '#004E8B',
+				typingIndicator: '#004E8B',
+				cardNavButton: '#ECECEC',
+				cardNavButtonHover: '#737373',
+				cardNavButtonFocus: '#737373'	
+			},
+			i18n: {
+				"pt-BR": {
+					audioResponseOff: 'Clique para ativar a resposta de áudio', 
+					audioResponseOn: 'Clique para desativar a resposta de áudio',                   
+					chatTitle: 'Pepsi - Assistente Digital', 
+					connected: 'Disponível',
+					disconnected: 'Indisponível',
+					inputPlaceholder: 'Digite sua mensagem aqui', 
+					send: 'Enviar (Enter)',      
+					clear: 'Limpar Chat',
+					close: 'Minimizar Chat',
+					connecting: 'Conectando...',
+					closing: 'Fechando...',
+					requestLocation: 'Envie a sua localização',
+					upload: 'Escolha o arquivo a ser enviado',
+					uploadFailed: 'Ocorreu um erro. Contacte o administrador.',
+					uploadUnsupportedFileType: 'Ocorreu um erro. Este tipo de arquivo não é permitido.',
+					requestLocationString: 'Ocorreu um erro. Contacte o administrador',
+					uploadFileSizeLimitExceeded: 'Limite de arquivo ultrapassado. O tamanho máximo é de 25mb.',
+					cardNavPrevious: 'Opção anterior',
+					cardNavNext: 'Próxima opção',
+					cardImagePlaceholder: 'Imagem',
+					recognitionTextPlaceholder: 'Fale a sua mensagem',
+					speak: 'Digite a sua mensagem',
+					shareVisual: 'Selecionar imagem',
+					shareLocation: 'Compartilhar localização',
+					openMap: 'Visualizar no mapa',
+					userMessage: 'Eu disse',
+					utteranceGeneric: 'Mensagem da Pepsi',
+					retryMessage: 'Tente novamente',
+					requestLocationDeniedUnavailable: 'Seu local atual não está disponível. Tente novamente ou digite sua cidade/UF.',
+					requestLocationDeniedTimeout: 'Demorando muito para obter sua localização atual. Tente novamente ou digite sua cidade/UF.',
+					requestLocationDeniedPermission: 'Permissão de localização negada. Permita o acesso para compartilhar sua localização ou digite sua cidade/UF.',
+					previousChats: 'Conversa anterior',
+					noSpeechTimeout: 'Não foi possível detectar a voz, nenhuma mensagem foi enviada.',
+					errorSpeechUnsupportedLocale: 'O navegador utilizado para detecção de fala não é compatível. Não é possível iniciar a voz.',
+					card: 'Cartão'
+				},
+				"en": {
+					audioResponseOff: 'Click to enable audio response', 
+					audioResponseOn: 'Click to disable audio response',                   
+					chatTitle: 'Pepsi - Digital Assistant', 
+					connected: 'Available',
+					disconnected: 'Unavailable',
+					inputPlaceholder: 'Type your message here', 
+					send: 'Send (Enter)',      
+					clear: 'Clear Chat',
+					close: 'Close Chat',
+					connecting: 'Connecting...',
+					closing: 'Closing...',
+					requestLocation: 'Send your location',
+					upload: 'Choose the file to send',
+					uploadFailed: 'An error has occurred. Contact your administrator.',
+					requestLocationString: 'An error has occurred. Contact your administrator.',
+					uploadFileSizeLimitExceeded: 'File limit exceeded. The maximum size is 25mb.'
+				}
+			}		
+		};
+		Bots = new WebSDK(chatWidgetSettings);
 
-        // Initialize SDK
-        if (isClientAuthEnabled) {
-            Bots = new WebSDK(chatWidgetSettings, generateToken);
-        } else {
-            Bots = new WebSDK(chatWidgetSettings);
-        }
-
-        // Optional event listeners
-        // All event listeners should preferably added before the connect() call, otherwise they may not be fired correctly
-        Bots.on(WebSDK.EVENT.CLICK_AUDIO_RESPONSE_TOGGLE, (state) => {
-            console.log('Response utterance toggled, current status =', state);
-        });
-
-        Bots.on(WebSDK.EVENT.WIDGET_OPENED, () => {
-            console.log('Widget is opened');
-        });
-        Bots.setSize('100vw' ,'100vh')
-
-        // Connect to the ODA
-        Bots.connect()
-        .then(
-            () => {
-                Bots.openChat()
-            }
-        )
-
+		// Connect to the ODA
+        Bots.connect();
+		
         // Create global object to refer Bots
         window[name] = Bots;
+		
+		// Customize the launch button
+		customizeLaunchButton();
+		
+
     }, 0);
 };
+
+function customizeLaunchButton() {
+    const launchButton = document.querySelector('.oda-chat-button');
+    if (launchButton) {
+        const element = document.createElement('div');
+        element.setAttribute('dir', 'auto');
+        element.setAttribute('class', 'oda-chat-letschat');
+        const innerText = document.createTextNode('Olá, como posso ajudar?');
+        element.appendChild(innerText);
+        launchButton.appendChild(element);
+    }
+}
