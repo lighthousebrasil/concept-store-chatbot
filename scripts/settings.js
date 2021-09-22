@@ -109,7 +109,7 @@ var initSdk = function(name) {
 			//logoIcon: 'botOracle/images/iconConceptStore.png',
 			//botIcon: 'botOracle/images/iconConceptStore.png', 	
 			font: '14px "Mier B", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-            		colors: {"branding": "#232323", "text": "#292929", "textLight": "#737373", "typingIndicator": "#D47229", 'botText': 'white', 'botMessageBackground': '#D47229', "actionsBackground": '#232323' },
+            		colors: {"branding": "white", "text": "#292929", "textLight": "#737373", "typingIndicator": "#D47229", 'botText': 'white', 'botMessageBackground': '#D47229', "actionsBackground": '#232323' },
 			i18n: {
 				"pt-BR": {
 					audioResponseOff: 'Clique para ativar a resposta de áudio', 
