@@ -66,7 +66,7 @@ var initSdk = function(name) {
 			shareLocation: false,
 			enableAutocomplete: true,
 			enableAutocompleteClientCache: true,
-			enableClearMessage: true,
+			enableClearMessage: false,
 			initUserProfile : {
 				profile:{
 					givenName: sessionStorage.getItem('givenName'),
@@ -89,6 +89,7 @@ var initSdk = function(name) {
 			speechLocale: speechLocale,
 			enableSecureConnection: true,
 			initBotAudioMuted: true,
+			openChatOnLoad: true,
 			skillVoices: skillVoices,			
 /*			multiLangChat: {
 				supportedLangs: [{
@@ -107,20 +108,12 @@ var initSdk = function(name) {
 			logoIcon: 'botOracle/images/iconConceptStore.png',
 			botIcon: 'botOracle/images/iconConceptStore.png', 	
 			font: '12px "Mier B", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-			colors: {
-				branding: '#004E8B',
-				botMessageBackground: '#ECECEC',
-				userMessageBackground: '#004E8B',
-				typingIndicator: '#004E8B',
-				cardNavButton: '#ECECEC',
-				cardNavButtonHover: '#737373',
-				cardNavButtonFocus: '#737373'	
-			},
+            		colors: {"branding": "white", "text": "#292929", "textLight": "#737373", "typingIndicator": "#D47229", 'botText': 'white', 'botMessageBackground': '#D47229', "actionsBackground": '#232323' },
 			i18n: {
 				"pt-BR": {
 					audioResponseOff: 'Clique para ativar a resposta de áudio', 
 					audioResponseOn: 'Clique para desativar a resposta de áudio',                   
-					chatTitle: 'Pepsi - Assistente Digital', 
+					chatTitle: 'Assistente Digital', 
 					connected: 'Disponível',
 					disconnected: 'Indisponível',
 					inputPlaceholder: 'Digite sua mensagem aqui', 
@@ -144,7 +137,7 @@ var initSdk = function(name) {
 					shareLocation: 'Compartilhar localização',
 					openMap: 'Visualizar no mapa',
 					userMessage: 'Eu disse',
-					utteranceGeneric: 'Mensagem da Pepsi',
+					utteranceGeneric: 'Mensagem da Loja Conceito',
 					retryMessage: 'Tente novamente',
 					requestLocationDeniedUnavailable: 'Seu local atual não está disponível. Tente novamente ou digite sua cidade/UF.',
 					requestLocationDeniedTimeout: 'Demorando muito para obter sua localização atual. Tente novamente ou digite sua cidade/UF.',
@@ -157,7 +150,7 @@ var initSdk = function(name) {
 				"en": {
 					audioResponseOff: 'Click to enable audio response', 
 					audioResponseOn: 'Click to disable audio response',                   
-					chatTitle: 'Pepsi - Digital Assistant', 
+					chatTitle: 'Digital Assistant', 
 					connected: 'Available',
 					disconnected: 'Unavailable',
 					inputPlaceholder: 'Type your message here', 
