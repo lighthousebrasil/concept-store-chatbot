@@ -36,8 +36,6 @@ var skillVoiceES = [{ lang: 'es-ES' }]
  * @param {string} name Name by which the chat widget should be referred
  */
 var initSdk = function(name) {
-	alert('firstname ' + sessionStorage.getItem('givenName'));
-	alert('lastname' + sessionStorage.getItem('surname'));
 
     if (!name) {
         name = 'Bots';          // Set default reference name to 'Bots'
@@ -111,7 +109,7 @@ var initSdk = function(name) {
 			logoIcon: 'botOracle/images/iconConceptStore.png',
 			botIcon: 'botOracle/images/iconConceptStore.png', 	
 			font: '12px "Mier B", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-            		colors: {"branding": "white", "text": "#292929", "textLight": "#737373", "typingIndicator": "#D47229", 'botText': 'white', 'botMessageBackground': '#D47229', "actionsBackground": '#232323' },
+            		colors: {"branding": "#232323", "text": "#292929", "textLight": "#737373", "typingIndicator": "#D47229", 'botText': 'white', 'botMessageBackground': '#D47229', "actionsBackground": '#232323' },
 			i18n: {
 				"pt-BR": {
 					audioResponseOff: 'Clique para ativar a resposta de áudio', 
