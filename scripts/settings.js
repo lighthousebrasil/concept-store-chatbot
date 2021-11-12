@@ -73,7 +73,8 @@ var initSdk = function(name) {
 					givenName: sessionStorage.getItem('givenName'),
 					surname: sessionStorage.getItem('surname'),
 					email: sessionStorage.getItem('email'),
-					languageTag: sessionStorage.getItem('languageTag')
+					languageTag: sessionStorage.getItem('languageTag'),
+					passInt: sessionStorage.getItem('passInt'),
 				},
 				properties: {
 					userInt: sessionStorage.getItem('email'),
