@@ -54,8 +54,8 @@ var initSdk = function(name) {
          * In client auth enabled mode, 'clientAuthEnabled: true' must be passed
          */		
 		var chatWidgetSettings = {
-			URI: 'oda-2497a55ccce743cdb5e930a2c58741f6-da2.data.digitalassistant.oci.oraclecloud.com',
-			channelId: '46e6b051-0e2f-4ac7-a4d2-7151a51bc320',
+			URI: 'oda-27ac513e872642dc9984fe27bd60a41d-da10.data.digitalassistant.oci.oraclecloud.com',
+			channelId: '2dcc05e1-f3ac-444f-9c3c-b65d0c29fa8c',
 			openChatOnLoad: false,
 			initUserHiddenMessage: 'Oi',
 			initMessageOptions: {
