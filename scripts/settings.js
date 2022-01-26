@@ -75,11 +75,21 @@ var initSdk = function(name) {
 					email: sessionStorage.getItem('email'),
 					languageTag: sessionStorage.getItem('languageTag'),
 					passInt: sessionStorage.getItem('passInt'),
+					
+					apiPass: sessionStorage.getItem('apiPass'),
+					passIntegration: sessionStorage.getItem('passIntegration'),
+					apiUser: sessionStorage.getItem('apiUser'),
+					userIntegration: sessionStorage.getItem('userIntegration'),
 				},
 				properties: {
 					userInt: sessionStorage.getItem('email'),
 					passInt: sessionStorage.getItem('passInt'),
-					userId: sessionStorage.getItem('userId')
+					userId: sessionStorage.getItem('userId'),
+					
+					apiPass: sessionStorage.getItem('apiPass'),
+					passIntegration: sessionStorage.getItem('passIntegration'),
+					apiUser: sessionStorage.getItem('apiUser'),
+					userIntegration: sessionStorage.getItem('userIntegration'),
 				}
 			},			
 			enableTimestamp: true,
