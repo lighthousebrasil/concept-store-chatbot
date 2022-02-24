@@ -10,23 +10,23 @@ var skillVoicePT =  [{
 	lang: 'pt-br', 
 	name: 'Luciana' 
 }, { 
-	lang: 'pt-PT', 
+	lang: 'pt-pt', 
 	name: 'Joana' }, 
 { 
 	lang: 'pt-br' 
 }];
 
 var skillVoiceEN =  [{
-	lang: 'en-US',
+	lang: 'en-us',
 	name: 'Samantha'
 }, {
-	lang: 'en-US',
+	lang: 'en-us',
 	name: 'Alex'
 }, {
-	lang: 'en-US'
+	lang: 'en-us'
 }];
 
-var skillVoiceES = [{ lang: 'es-ES' }]
+var skillVoiceES = [{ lang: 'es-es' }]
 
 
 /**
@@ -43,8 +43,8 @@ var initSdk = function(name) {
     var Bots;
 
     var locale = sessionStorage.getItem('languageTag');
-    var speechLocale = locale == 'pt-BR' ? 'pt-br' : locale == 'es' ? 'es-es' :'en-US';
-    var skillVoices = locale == 'pt-BR' ? skillVoicePT : locale == 'es' ? skillVoiceES :skillVoiceEN;
+    var speechLocale = locale == 'pt_BR' ? 'pt-br' : locale == 'es' ? 'es-es' :'en-us';
+    var skillVoices = locale == 'pt_BR' ? skillVoicePT : locale == 'es' ? skillVoiceES :skillVoiceEN;
 
     setTimeout(function() {
         /**
@@ -75,27 +75,17 @@ var initSdk = function(name) {
 					email: sessionStorage.getItem('email'),
 					languageTag: sessionStorage.getItem('languageTag'),
 					passInt: sessionStorage.getItem('passInt'),
-					
-					apiPass: sessionStorage.getItem('apiPass'),
-					passIntegration: sessionStorage.getItem('passIntegration'),
-					apiUser: sessionStorage.getItem('apiUser'),
-					userIntegration: sessionStorage.getItem('userIntegration'),
 				},
 				properties: {
 					userInt: sessionStorage.getItem('email'),
 					passInt: sessionStorage.getItem('passInt'),
-					userId: sessionStorage.getItem('userId'),
-					
-					apiPass: sessionStorage.getItem('apiPass'),
-					passIntegration: sessionStorage.getItem('passIntegration'),
-					apiUser: sessionStorage.getItem('apiUser'),
-					userIntegration: sessionStorage.getItem('userIntegration'),
+					userId: sessionStorage.getItem('userId')
 				}
 			},			
 			enableTimestamp: true,
 			showConnectionStatus: true,
 			embeddedVideo: true,
-			locale: 'pt-BR',
+			locale: speechLocale,
 			enableBotAudioResponse: true,
 			enableSpeech: true,
 			speechLocale: speechLocale,
