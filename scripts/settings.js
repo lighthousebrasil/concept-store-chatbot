@@ -37,11 +37,6 @@ var skillVoiceEN = [
 
 var skillVoiceES = [{ lang: "es-es" }];
 
-("use strict");
-
-// Set client auth mode - true to enable client auth, false to disable it
-var isClientAuthEnabled = false;
-
 /**
  * Initializes the SDK and sets a global field with passed name for it the can
  * be referred later
