@@ -37,6 +37,13 @@ var skillVoiceES = [{ lang: 'es-es' }]
  */
 var initSdk = function(name) {
 
+    if (!document || !WebSDK) {
+        setTimeout(function() {
+            initSdk(name);
+        }, 2000);
+        return;
+    }
+	
     if (!name) {
         name = 'Bots';          // Set default reference name to 'Bots'
     }
