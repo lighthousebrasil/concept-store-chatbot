@@ -108,22 +108,7 @@ function initSdk(name) {
       initBotAudioMuted: true,
       openChatOnLoad: true,
       skillVoices: skillVoices,
-      /*			multiLangChat: {
-                      supportedLangs: [{
-                          lang: 'en'
-                      }, {
-                          lang: 'es',
-                          label: 'Español'
-                      }, {
-                          lang: 'pt',
-                          label: 'Português'
-                      }],
-                      primary: 'pt'
-                  },	*/
       conversationBeginPosition: "bottom",
-      //botButtonIcon: 'botOracle/images/iconConceptStore.png',
-      //logoIcon: 'botOracle/images/iconConceptStore.png',
-      //botIcon: 'botOracle/images/iconConceptStore.png',
       font: '14px "Mier B", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       colors: {
         branding: "white",
@@ -217,6 +202,8 @@ function initSdk(name) {
         isFirstConnection = false;
       }
     });
+
+    Bots.openChat();
 
     // Create global object to refer Bots
     window[name] = Bots;
