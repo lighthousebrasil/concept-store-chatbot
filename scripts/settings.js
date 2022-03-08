@@ -196,9 +196,7 @@ function initSdk(name) {
     var isFirstConnection = true;
     Bots.on(WebSDK.EVENT.WIDGET_OPENED, function () {
       if (isFirstConnection) {
-        Bots.connect().then(() => {
-            Bots.openChat();
-        })
+        Bots.connect()
         isFirstConnection = false;
       }
     });
