@@ -57,6 +57,10 @@ function initSdk(name) {
   }
   var Bots;
 
+  var locale = sessionStorage.getItem('languageTag');
+  var speechLocale = locale == 'pt_BR' ? 'pt-br' : locale == 'es' ? 'es-es' :'en-us';
+  var skillVoices = locale == 'pt_BR' ? skillVoicePT : locale == 'es' ? skillVoiceES :skillVoiceEN;
+
   setTimeout(function () {
     /**
      * SDK configuration settings
