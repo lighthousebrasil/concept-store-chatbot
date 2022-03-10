@@ -88,13 +88,8 @@ function initSdk(name) {
           surname: sessionStorage.getItem("surname"),
           email: sessionStorage.getItem("email"),
           languageTag: sessionStorage.getItem("languageTag"),
-          passInt: sessionStorage.getItem("passInt"),
-        },
-        properties: {
-          userInt: sessionStorage.getItem("email"),
-          passInt: sessionStorage.getItem("passInt"),
-          userId: sessionStorage.getItem("userId"),
-        },
+          passInt: sessionStorage.getItem("passInt")
+        }
       },
       enableTimestamp: true,
       showConnectionStatus: true,
