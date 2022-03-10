@@ -183,6 +183,50 @@ function initSdk(name) {
           uploadFileSizeLimitExceeded:
             "File limit exceeded. The maximum size is 25mb.",
         },
+        es: {
+          audioResponseOff: "Haz clic para habilitar los comentarios de audio",
+          audioResponseOn: "Haga clic para deshabilitar la respuesta de audio",
+          chatTitle: "Asistente Digital",
+          connected: "Disponible",
+          disconnected: "Indisponible",
+          inputPlaceholder: "Escribe tu mensaje aquí",
+          send: "Mandar (Enter)",
+          clear: "Limpiar Chat",
+          close: "Minimizar El Chat",
+          connecting: "Conectando...",
+          closing: "Cerrando...",
+          requestLocation: "Envía tu Ubicación",
+          upload: "Elige el archivo a enviar",
+          uploadFailed: "Ocurrio un error. Contactar al administrador.",
+          uploadUnsupportedFileType:
+            "Ocurrio un error. Este tipo de archivo no está permitido.",
+          requestLocationString: "Ocurrio un error. Contactar al administrador",
+          uploadFileSizeLimitExceeded:
+            "Se excedió el límite de archivos. El tamaño máximo es de 25mb.",
+          cardNavPrevious: "Opción anterior",
+          cardNavNext: "Siguiente opción",
+          cardImagePlaceholder: "Imagen",
+          recognitionTextPlaceholder: "Habla tu mensaje",
+          speak: "Escribe tu mensaje",
+          shareVisual: "Seleccionar imagen",
+          shareLocation: "Comparte ubicacion",
+          openMap: "Ver en el mapa",
+          userMessage: "Yo dije",
+          utteranceGeneric: "Mensaje de la tienda conceptual",
+          retryMessage: "Inténtalo de nuevo",
+          requestLocationDeniedUnavailable:
+            "Su ubicación actual no está disponible. Vuelve a intentarlo o introduce tu ciudad.",
+          requestLocationDeniedTimeout:
+            "Tardando demasiado en obtener su ubicación actual. Vuelve a intentarlo o introduce tu ciudad.",
+          requestLocationDeniedPermission:
+            "Permiso de ubicación denegado. Permite el acceso para compartir tu ubicación o ingresar tu ciudad.",
+          previousChats: "Conversación anterior",
+          noSpeechTimeout:
+            "No se puede detectar la voz, no se envió ningún mensaje.",
+          errorSpeechUnsupportedLocale:
+            "El navegador utilizado para la detección de voz no es compatible. No se puede iniciar la voz.",
+          card: "Tarjeta",
+        }
       },
     };
 
@@ -204,18 +248,5 @@ function initSdk(name) {
 
     // Create global object to refer Bots
     window[name] = Bots;
-    customizeLaunchButton();
   }, 0);
-}
-
-function customizeLaunchButton() {
-    const launchButton = document.querySelector('.oda-chat-button');
-    if (launchButton) {
-        const element = document.createElement('div');
-        element.setAttribute('dir', 'auto');
-        element.setAttribute('class', 'oda-chat-letschat');
-        const innerText = document.createTextNode('Olá, como posso ajudar?');
-        element.appendChild(innerText);
-        launchButton.appendChild(element);
-    }
 }
