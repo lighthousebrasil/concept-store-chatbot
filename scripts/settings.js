@@ -48,7 +48,7 @@ function initSdk(name) {
   if (!document || !WebSDK) {
     setTimeout(function () {
       initSdk(name);
-    }, 2000);
+    }, 5000);
     return;
   }
 
